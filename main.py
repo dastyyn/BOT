@@ -4,7 +4,8 @@ from aiogram.types import BotCommand
 from dotenv import load_dotenv
 
 from bot import bot, dp
-from handlers import (my_info_router, picture_router, start_router)
+from handlers import (my_info_router, picture_router, start_router,
+                      search_router)
 
 
 async def main():
@@ -13,7 +14,7 @@ async def main():
             BotCommand(command="start", description="Начало"),
             BotCommand(command="my_info", description="Информация обо мне"),
             BotCommand(command="picture", description="Случайная картинка"),
-            BotCommand(command="search", description="Выбор жанра"),
+            BotCommand(command="search", description="Каталог"),
             BotCommand(command="quest", description="Опрос")
         ]
     )
@@ -21,6 +22,7 @@ async def main():
     dp.include_router(start_router)
     dp.include_router(my_info_router)
     dp.include_router(picture_router)
+    dp.include_router(search_router)
 
     try:
         await dp.start_polling(bot)
