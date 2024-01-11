@@ -19,3 +19,5 @@ async def picture(message: types.Message):
     photo = types.FSInputFile(file_path)
 
     await bot.send_photo(chat_id=message.chat.id, photo=photo)
+
+    

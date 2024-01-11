@@ -34,12 +34,12 @@ async def start(message: types.Message):
 async def abot_us(callback: types.CallbackQuery):
     await callback.answer()
     await callback.message.answer("О боте:\n"
-                                  "Бот создан для поиска аниме")
+                                "Бот создан для поиска аниме")
 
 
 @start_router.callback_query(F.data == "contact")
 async def us_contacts(callback: types.CallbackQuery):
     await callback.answer()
     await callback.message.answer("Контакты:\n"
-                                  "mail: dastyyyyyn@icloud.com\n"
-                                  "phone number: +996700263233")
+                                "mail: dastyyyyyn@icloud.com\n"
+                                "phone number: +996700263233")
