@@ -8,12 +8,12 @@ search_router = Router()
 async def search(message: types.Message):
     kb = [
         [
-                types.KeyboardButton(text="Детектив"),
-                types.KeyboardButton(text="Романтика"),
+            types.KeyboardButton(text="Детектив"),
+            types.KeyboardButton(text="Романтика"),
         ],
         [
-                types.KeyboardButton(text="Сенен"),
-                types.KeyboardButton(text="Иссекай")
+            types.KeyboardButton(text="Сенен"),
+            types.KeyboardButton(text="Иссекай")
         ]
     ]
     keyboard = types.ReplyKeyboardMarkup(
@@ -24,24 +24,22 @@ async def search(message: types.Message):
 
 @search_router.message(F.text == "Детектив")
 async def detective(message: types.Message):
-    kb = types.ReplyKeyboardRemove
-    await message.answer("Death note")
-
+    kb = types.ReplyKeyboardRemove()
+    await message.answer("Death note", reply_markup=kb)
 
 @search_router.message(F.text == "Романтика")
 async def romance(message: types.Message):
-    kb = types.ReplyKeyboardRemove
-    await message.answer("My Senpai is annoying")
+    kb = types.ReplyKeyboardRemove()
+    await message.answer("My Senpai is annoying", reply_markup=kb)
 
 
 @search_router.message(F.text == "Сенен")
 async def shonen(message: types.Message):
-    kb = types.ReplyKeyboardRemove
-    await message.answer("One Piece")
+    kb = types.ReplyKeyboardRemove()
+    await message.answer("One Piece", reply_markup=kb)
 
 
 @search_router.message(F.text == "Иссекай")
 async def isekai(message: types.Message):
-    kb = types.ReplyKeyboardRemove
-    await message.answer("Re:Zero")
-
+    kb = types.ReplyKeyboardRemove()
+    await message.answer("Re:Zero", reply_markup=kb)

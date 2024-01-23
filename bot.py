@@ -5,5 +5,6 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-bot = Bot(token=getenv('TOKEN'))
+TOKEN = getenv('TOKEN')
+bot = Bot(token=TOKEN)
 dp = Dispatcher()

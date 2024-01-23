@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 from bot import bot, dp
 from handlers import (my_info_router, picture_router, start_router,
-                    search_router)
+                    search_router, questionnaire_router)
 
 
 async def main():
@@ -23,7 +23,7 @@ async def main():
     dp.include_router(my_info_router)
     dp.include_router(picture_router)
     dp.include_router(search_router)
-
+    dp.include_router(questionnaire_router)
     try:
         await dp.start_polling(bot)
     finally:
