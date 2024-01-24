@@ -32,18 +32,7 @@ def populate_db():
     """)
     db.commit()
 
-# Получение аниме по жанру
-# def get_anime_by_genre(genre):
-#     cursor.execute("""
-#         SELECT name FROM anime WHERE genre = ?;
-#     """, (genre,))
-#     return cursor.fetchall()
 
-# def get_anime_by_genre(genre):
-#     cursor.execute("""
-#         SELECT DISTINCT name FROM anime WHERE genre = ?;
-#     """, (genre,))
-#     return cursor.fetchall()
 def get_anime_by_genre(genre):
     cursor.execute("""
         SELECT DISTINCT name FROM anime WHERE genre = ?;
