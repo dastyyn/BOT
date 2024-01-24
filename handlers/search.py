@@ -1,5 +1,6 @@
 from aiogram import Router, types, F
 from aiogram.filters import Command
+from db.queries import get_anime_by_genre
 
 search_router = Router()
 
@@ -8,38 +9,51 @@ search_router = Router()
 async def search(message: types.Message):
     kb = [
         [
-            types.KeyboardButton(text="Детектив"),
-            types.KeyboardButton(text="Романтика"),
+            types.KeyboardButton(text="Detective"),
+            types.KeyboardButton(text="Senen"),
         ],
         [
-            types.KeyboardButton(text="Сенен"),
-            types.KeyboardButton(text="Иссекай")
+            types.KeyboardButton(text="Romance"),
+            types.KeyboardButton(text="Isekai")
         ]
     ]
     keyboard = types.ReplyKeyboardMarkup(
         keyboard=kb,
         resize_keyboard=True)
-    await message.answer("Выберите жанр аниме:", reply_markup=keyboard)
+    await message.answer("Choose anime genre:", reply_markup=keyboard)
 
 
-@search_router.message(F.text == "Детектив")
+@search_router.message(F.text == "Detective")
 async def detective(message: types.Message):
+    genre = "Detective"
+    anime_list = get_anime_by_genre(genre)
     kb = types.ReplyKeyboardRemove()
-    await message.answer("Death note", reply_markup=kb)
+    for anime in anime_list:
+        await message.answer(anime[0], reply_markup=kb)
 
-@search_router.message(F.text == "Романтика")
+
+@search_router.message(F.text == "Senen")
+async def senen(message: types.Message):
+    genre = "Senen"
+    anime_list = get_anime_by_genre(genre)
+    kb = types.ReplyKeyboardRemove()
+    for anime in anime_list:
+        await message.answer(anime[0], reply_markup=kb)
+
+
+@search_router.message(F.text == "Romance")
 async def romance(message: types.Message):
+    genre = "Romance"
+    anime_list = get_anime_by_genre(genre)
     kb = types.ReplyKeyboardRemove()
-    await message.answer("My Senpai is annoying", reply_markup=kb)
+    for anime in anime_list:
+        await message.answer(anime[0], reply_markup=kb)
 
 
-@search_router.message(F.text == "Сенен")
-async def shonen(message: types.Message):
-    kb = types.ReplyKeyboardRemove()
-    await message.answer("One Piece", reply_markup=kb)
-
-
-@search_router.message(F.text == "Иссекай")
+@search_router.message(F.text == "Isekai")
 async def isekai(message: types.Message):
+    genre = "Isekai"
+    anime_list = get_anime_by_genre(genre)
     kb = types.ReplyKeyboardRemove()
-    await message.answer("Re:Zero", reply_markup=kb)
+    for anime in anime_list:
+        await message.answer(anime[0], reply_markup=kb)
