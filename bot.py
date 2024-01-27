@@ -8,3 +8,4 @@ load_dotenv()
 TOKEN = getenv('TOKEN')
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
+Admin = [974896300, ]
