@@ -19,7 +19,9 @@ async def start(message: types.Message):
             ], [
                 types.InlineKeyboardButton(
                     text="Пасхалка", url="https://goo.su/oKxfb"     # ссылка безопасна
-                )
+                ),
+                types.InlineKeyboardButton(
+                    text="Парсер", callback_data="house")
             ]
         ]
     )

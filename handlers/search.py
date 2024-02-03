@@ -17,6 +17,7 @@ async def search(message: types.Message):
             types.KeyboardButton(text="Romance"),
             types.KeyboardButton(text="Isekai")
         ]
+        
     ]
     keyboard = types.ReplyKeyboardMarkup(
         keyboard=kb,

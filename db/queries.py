@@ -3,7 +3,7 @@ from pathlib import Path
 
 def init_db():
     global db, cursor
-    db = sqlite3.connect(Path(__file__).parent / 'db.sqlite')
+    db = sqlite3.connect(Path(__file__).parent.parent / 'db.sqlite3')
     cursor = db.cursor()
 
 def create_tables():

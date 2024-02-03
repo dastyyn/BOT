@@ -2,11 +2,13 @@ import asyncio
 import logging
 
 from aiogram.types import BotCommand
-from bot import bot, dp
+from bot import bot, dp, Admin
 from handlers import (my_info_router, picture_router, start_router,
                     search_router, questionnaire_router)
 from db.queries import init_db, create_tables, populate_db
-from bot import Admin
+from parserr import parser_router
+
+
 logging.basicConfig(level=logging.INFO)
 
 
@@ -27,15 +29,20 @@ async def on_startup(dp):
             ]
         )
 
+
         init_db()
         create_tables()
         populate_db()
 
+
+
         dp.include_router(start_router)
+        dp.include_router(questionnaire_router)
         dp.include_router(my_info_router)
         dp.include_router(picture_router)
         dp.include_router(search_router)
-        dp.include_router(questionnaire_router)
+        dp.include_router(parser_router)
+
 
         await dp.start_polling(bot)
     except Exception as e:
