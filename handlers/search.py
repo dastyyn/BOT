@@ -26,7 +26,7 @@ async def search(message: types.Message):
 
 
 
-@search_router.message(F.text)
+@search_router.message(F.text.exclude(F.text.startswith("напомни")))
 async def handle_genre(message: types.Message):
     valid_genres = ["Detective", "Shonen", "Romance", "Isekai"]
     

@@ -2,7 +2,7 @@ import asyncio
 import logging
 
 from aiogram.types import BotCommand
-from bot import bot, dp, Admin
+from bot import bot, dp, Admin, scheduler
 from handlers import (my_info_router, picture_router, start_router,
                     search_router, questionnaire_router)
 from db.queries import init_db, create_tables, populate_db
@@ -32,7 +32,7 @@ async def on_startup(dp):
 
         init_db()
         create_tables()
-        populate_db()
+        # populate_db()
 
 
 
@@ -40,8 +40,9 @@ async def on_startup(dp):
         dp.include_router(questionnaire_router)
         dp.include_router(my_info_router)
         dp.include_router(picture_router)
-        dp.include_router(search_router)
         dp.include_router(parser_router)
+        
+        # dp.include_router(search_router)
 
 
         await dp.start_polling(bot)
